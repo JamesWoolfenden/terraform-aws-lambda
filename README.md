@@ -1,18 +1,13 @@
 [![Slalom][logo]](https://slalom.com)
 
-# terraform-aws-lambda-redux
+# terraform-aws-lambda
 
-[![Build Status](https://github.com/JamesWoolfenden/terraform-aws-lambda-redux/workflows/Verify%20and%20Bump/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-aws-lambda-redux)
-[![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/terraform-aws-lambda-redux.svg)](https://github.com/JamesWoolfenden/terraform-aws-lambda-redux/releases/latest)
+[![Build Status](https://github.com/JamesWoolfenden/terraform-aws-lambda/workflows/Verify%20and%20Bump/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-aws-lambda)
+[![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/terraform-aws-lambda.svg)](https://github.com/JamesWoolfenden/terraform-aws-lambda/releases/latest)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![pre-commit](https://img.shields.io/badge/checkov-verified-brightgreen)](https://www.checkov.io/)
 
-The terraform module creates lambda with permissions, for my purposes a lex lambda combination bit options for IAM and Cloudwatch.
-To use a lambda with an intent a number of other objects are either required. In this module I have included a number of reasonable default values.
-This should make it easier to build the lambdas that go with your lex objects.
-The lambda permission is a array/list this means you can add as many permissions to lambda as you need to.
-
-How to use this project:
+Test project for 
 
 ---
 
@@ -20,18 +15,12 @@ It's 100% Open Source and licensed under the [APACHE2](LICENSE).
 
 ## Usage
 
-This is a minimal example **ExampleA**, but with Cloudwatch alarms enabled.
+This is a minimal example **examplea**, but with Cloudwatch alarms enabled.
 
 ```hcl
 module "lambda" {
-  source = "github.com/jameswoolfenden/terraform-aws-lambda-redux"
+  source = "github.com/jameswoolfenden/terraform-aws-lambda"
   version= "0.3.40"
-
-  lambdapermmissions = [{
-    intent     = "Pizza"
-    source_arn = "Pizza:*"
-  }]
-
   account_id     = data.aws_caller_identity.current.account_id
   alarms_enabled = true
   common_tags    = var.common_tags
@@ -143,13 +132,13 @@ Check out these related projects.
 
 **Got a question?**
 
-File a GitHub [issue](https://github.com/JamesWoolfenden/terraform-aws-lambda-redux/issues).
+File a GitHub [issue](https://github.com/JamesWoolfenden/terraform-aws-lambda/issues).
 
 ## Contributing
 
 ### Bug Reports & Feature Requests
 
-Please use the [issue tracker](https://github.com/JamesWoolfenden/terraform-aws-lambda-redux/issues) to report any bugs or file feature requests.
+Please use the [issue tracker](https://github.com/JamesWoolfenden/terraform-aws-lambda/issues) to report any bugs or file feature requests.
 
 ## Copyrights
 
@@ -190,8 +179,8 @@ under the License.
 [linkedin]: https://www.linkedin.com/company/slalom-consulting/
 [twitter]: https://twitter.com/Slalom
 
-[share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-lambda-redux&url=https://github.com/JamesWoolfenden/terraform-aws-lambda-redux
-[share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-lambda-redux&url=https://github.com/JamesWoolfenden/terraform-aws-lambda-redux
-[share_reddit]: https://reddit.com/submit/?url=https://github.com/JamesWoolfenden/terraform-aws-lambda-redux
-[share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/JamesWoolfenden/terraform-aws-lambda-redux
-[share_email]: mailto:?subject=terraform-aws-lambda-redux&body=https://github.com/JamesWoolfenden/terraform-aws-lambda-redux
+[share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-lambda&url=https://github.com/JamesWoolfenden/terraform-aws-lambda
+[share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-lambda&url=https://github.com/JamesWoolfenden/terraform-aws-lambda
+[share_reddit]: https://reddit.com/submit/?url=https://github.com/JamesWoolfenden/terraform-aws-lambda
+[share_facebook]: https://facebook.com/sharer/sharer.php?u=https://github.com/JamesWoolfenden/terraform-aws-lambda
+[share_email]: mailto:?subject=terraform-aws-lambda&body=https://github.com/JamesWoolfenden/terraform-aws-lambda

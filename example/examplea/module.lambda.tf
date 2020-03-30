@@ -1,11 +1,5 @@
 module "lambda" {
   source = "../../"
-
-  lambdapermmissions = [{
-    intent     = "Pizza"
-    source_arn = "Pizza:*"
-  }]
-
   account_id     = data.aws_caller_identity.current.account_id
   alarms_enabled = true
   common_tags    = var.common_tags
