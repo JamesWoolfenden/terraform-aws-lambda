@@ -7,7 +7,7 @@
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![pre-commit](https://img.shields.io/badge/checkov-verified-brightgreen)](https://www.checkov.io/)
 
-Test project for 
+Test project for
 
 ---
 
@@ -34,58 +34,7 @@ module "lambda" {
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-## Providers
-
-| Name | Version |
-|------|---------|
-| aws | n/a |
-
-## Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:-----:|
-| account\_id | The Aws account the policy or object should target | `string` | n/a | yes |
-| action | Action for the Lambda permission | `string` | `"lambda:InvokeFunction"` | no |
-| alarms\_enabled | Cloudwatch alarms enabled | `bool` | `false` | no |
-| common\_tags | Implements the common tags scheme | `map` | n/a | yes |
-| description | Of the the Lambda | `string` | n/a | yes |
-| envvar | Optional set of environmental variables for the lambda | `map` | <pre>{<br>  "Terraform": "Bug"<br>}</pre> | no |
-| filename | name of zip file if any | `string` | n/a | yes |
-| handler | The file the lambda should import | `string` | `"index.handler"` | no |
-| kms\_master\_key\_id | KMS key to encrypt SNS | `string` | `"alias/aws/sns"` | no |
-| lambdapermmissions | This takes a list object with values to set permissions of a lambda. Can take multiple permission objects | `list` | `[]` | no |
-| layers | Optionally, add in up 5 lambda layers | `list` | `[]` | no |
-| memory\_size | Of the the lambda | `string` | `"128"` | no |
-| metric\_comparison\_operator | For Cloudwatch Alarms | `string` | `"GreaterThanThreshold"` | no |
-| metric\_datapoints\_to\_alarm | For Cloudwatch Alarms | `number` | `1` | no |
-| metric\_evaluation\_periods | For Cloudwatch Alarms | `number` | `1` | no |
-| metric\_metric\_name | n/a | `string` | `"Invocations"` | no |
-| metric\_period | n/a | `number` | `300` | no |
-| metric\_statistic | n/a | `string` | `"Average"` | no |
-| metric\_threshold | n/a | `number` | `100` | no |
-| name | Name of Lambda object | `string` | n/a | yes |
-| prefixdash | Support for renaming on multi-environments | `string` | `""` | no |
-| principal | n/a | `string` | `"lex.amazonaws.com"` | no |
-| region\_name | Aws region name, eu-west-1... | `string` | n/a | yes |
-| role\_arn | The name you want your IAM role to have | `string` | n/a | yes |
-| runtime | Language the code runs in | `string` | `"nodejs8.10"` | no |
-| s3\_bucket | path to the lambda bucket | `string` | n/a | yes |
-| s3\_key | path to the lambda zip | `string` | n/a | yes |
-| security\_group\_ids | The IDs of some security groups | `list(string)` | `[]` | no |
-| subnet\_ids | Subnet IDs... | `list(string)` | `[]` | no |
-| timeout | Of the the lambda | `string` | `"100"` | no |
-| tracing\_mode | Enable X-ray and in what mode Active or PassThrough | `string` | `"Active"` | no |
-| vpc\_config | Optional Vpc attachment config | `map` | `{}` | no |
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| lambda\_arn | n/a |
-| memory\_size | n/a |
-| source\_code\_size | n/a |
-| timeout | n/a |
-
+Error: no lines in file
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Further work
 
