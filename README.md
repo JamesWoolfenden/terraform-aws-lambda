@@ -5,7 +5,7 @@
 [![Build Status](https://github.com/JamesWoolfenden/terraform-aws-lambda/workflows/Verify%20and%20Bump/badge.svg?branch=master)](https://github.com/JamesWoolfenden/terraform-aws-lambda)
 [![Latest Release](https://img.shields.io/github/release/JamesWoolfenden/terraform-aws-lambda.svg)](https://github.com/JamesWoolfenden/terraform-aws-lambda/releases/latest)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
-[![pre-commit](https://img.shields.io/badge/checkov-verified-brightgreen)](https://www.checkov.io/)
+[![checkov](https://img.shields.io/badge/checkov-verified-brightgreen)](https://www.checkov.io/)
 
 Test project for
 
@@ -34,7 +34,58 @@ module "lambda" {
 ```
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-Error: no lines in file
+## Requirements
+
+No requirements.
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | n/a |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| account\_id | The Aws account the policy or object should target | `string` | n/a | yes |
+| action | Action for the Lambda permission | `string` | `"lambda:InvokeFunction"` | no |
+| alarms\_enabled | Cloudwatch alarms enabled | `bool` | `false` | no |
+| common\_tags | Implements the common tags scheme | `map` | n/a | yes |
+| description | Of the the Lambda | `string` | n/a | yes |
+| envvar | Optional set of environmental variables for the lambda | `map` | <pre>{<br>  "Terraform": "Bug"<br>}</pre> | no |
+| filename | name of zip file if any | `string` | `null` | no |
+| handler | The file the lambda should import | `string` | `"index.handler"` | no |
+| lambdapermmissions | This takes a list object with values to set permissions of a lambda. Can take multiple permission objects | `list` | `[]` | no |
+| layers | Optionally, add in up 5 lambda layers | `list` | `[]` | no |
+| memory\_size | Of the the lambda | `string` | `"128"` | no |
+| metric\_comparison\_operator | For Cloudwatch Alarms | `string` | `"GreaterThanThreshold"` | no |
+| metric\_datapoints\_to\_alarm | For Cloudwatch Alarms | `number` | `1` | no |
+| metric\_evaluation\_periods | For Cloudwatch Alarms | `number` | `1` | no |
+| metric\_metric\_name | n/a | `string` | `"Invocations"` | no |
+| metric\_period | n/a | `number` | `300` | no |
+| metric\_statistic | n/a | `string` | `"Average"` | no |
+| metric\_threshold | n/a | `number` | `100` | no |
+| name | Name of Lambda object | `string` | n/a | yes |
+| prefixdash | Support for renaming on multi-environments | `string` | `""` | no |
+| principal | n/a | `string` | `"lex.amazonaws.com"` | no |
+| region\_name | Aws region name, eu-west-1... | `string` | n/a | yes |
+| role\_arn | The name you want your IAM role to have | `string` | n/a | yes |
+| runtime | Language the code runs in | `string` | `"nodejs8.10"` | no |
+| s3\_bucket | path to the lambda bucket | `string` | `null` | no |
+| s3\_key | path to the lambda zip | `string` | `null` | no |
+| security\_group\_ids | The IDs of some security groups | `list(string)` | `[]` | no |
+| subnet\_ids | Subnet IDs... | `list(string)` | `[]` | no |
+| timeout | Of the the lambda | `string` | `"100"` | no |
+| tracing\_mode | Enable X-ray and in what mode Active or PassThrough | `string` | `"Active"` | no |
+| vpc\_config | Optional Vpc attachment config | `map` | `{}` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| lambda | n/a |
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Further work
 
@@ -125,8 +176,8 @@ under the License.
 [logo]: https://gist.githubusercontent.com/JamesWoolfenden/5c457434351e9fe732ca22b78fdd7d5e/raw/15933294ae2b00f5dba6557d2be88f4b4da21201/slalom-logo.png
 [website]: https://slalom.com
 [github]: https://github.com/jameswoolfenden
-[linkedin]: https://www.linkedin.com/company/slalom-consulting/
-[twitter]: https://twitter.com/Slalom
+[linkedin]: https://www.linkedin.com/in/jameswoolfenden/
+[twitter]: https://twitter.com/JimWoolfenden
 
 [share_twitter]: https://twitter.com/intent/tweet/?text=terraform-aws-lambda&url=https://github.com/JamesWoolfenden/terraform-aws-lambda
 [share_linkedin]: https://www.linkedin.com/shareArticle?mini=true&title=terraform-aws-lambda&url=https://github.com/JamesWoolfenden/terraform-aws-lambda
