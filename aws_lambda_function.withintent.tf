@@ -31,6 +31,6 @@ resource "aws_lambda_function" "withintent" {
   }
 
   tracing_config {
-    mode = var.tracing_mode
+    mode = "PassThrough"
   }
 }
