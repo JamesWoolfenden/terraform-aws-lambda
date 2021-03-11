@@ -48,6 +48,16 @@ No requirements.
 |------|---------|
 | aws | n/a |
 
+## Modules
+
+No Modules.
+
+## Resources
+
+| Name |
+|------|
+| [aws_lambda_function](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function) |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -55,13 +65,13 @@ No requirements.
 | account\_id | The Aws account the policy or object should target | `string` | n/a | yes |
 | action | Action for the Lambda permission | `string` | `"lambda:InvokeFunction"` | no |
 | alarms\_enabled | Cloudwatch alarms enabled | `bool` | `false` | no |
-| common\_tags | Implements the common tags scheme | `map` | n/a | yes |
+| common\_tags | Implements the common tags scheme | `map(any)` | n/a | yes |
 | description | Of the the Lambda | `string` | n/a | yes |
-| envvar | Optional set of environmental variables for the lambda | `map` | <pre>{<br>  "Terraform": "Bug"<br>}</pre> | no |
+| envvar | Optional set of environmental variables for the lambda | `map(any)` | <pre>{<br>  "Terraform": "Bug"<br>}</pre> | no |
 | filename | name of zip file if any | `string` | `null` | no |
 | handler | The file the lambda should import | `string` | `"index.handler"` | no |
-| lambdapermmissions | This takes a list object with values to set permissions of a lambda. Can take multiple permission objects | `list` | `[]` | no |
-| layers | Optionally, add in up 5 lambda layers | `list` | `[]` | no |
+| lambdapermmissions | This takes a list object with values to set permissions of a lambda. Can take multiple permission objects | `list(any)` | `[]` | no |
+| layers | Optionally, add in up 5 lambda layers | `list(any)` | `[]` | no |
 | memory\_size | Of the the lambda | `string` | `"128"` | no |
 | metric\_comparison\_operator | For Cloudwatch Alarms | `string` | `"GreaterThanThreshold"` | no |
 | metric\_datapoints\_to\_alarm | For Cloudwatch Alarms | `number` | `1` | no |
@@ -82,14 +92,13 @@ No requirements.
 | subnet\_ids | Subnet IDs... | `list(string)` | `[]` | no |
 | timeout | Of the the lambda | `string` | `"100"` | no |
 | tracing\_mode | Enable X-ray and in what mode Active or PassThrough | `string` | `"Active"` | no |
-| vpc\_config | Optional Vpc attachment config | `map` | `{}` | no |
+| vpc\_config | Optional Vpc attachment config | `map(any)` | `{}` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
 | lambda | n/a |
-
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Further work

@@ -1,5 +1,5 @@
 variable "lambdapermmissions" {
-  type        = list
+  type        = list(any)
   description = "This takes a list object with values to set permissions of a lambda. Can take multiple permission objects"
   default     = []
 }
@@ -48,13 +48,13 @@ variable "memory_size" {
 }
 
 variable "envvar" {
-  type        = map
+  type        = map(any)
   default     = { "Terraform" = "Bug" }
   description = "Optional set of environmental variables for the lambda"
 }
 
 variable "vpc_config" {
-  type        = map
+  type        = map(any)
   default     = {}
   description = "Optional Vpc attachment config"
 }
@@ -66,7 +66,7 @@ variable "runtime" {
 }
 
 variable "common_tags" {
-  type        = map
+  type        = map(any)
   description = "Implements the common tags scheme"
 }
 
@@ -77,7 +77,7 @@ variable "prefixdash" {
 }
 
 variable "layers" {
-  type        = list
+  type        = list(any)
   description = "Optionally, add in up 5 lambda layers"
   default     = []
 }
