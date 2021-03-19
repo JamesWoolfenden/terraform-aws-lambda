@@ -1,5 +1,6 @@
 data "aws_iam_policy_document" "lambda" {
-
+  #checkov:skip=CKV_AWS_111:A general role
+  #checkov:skip=CKV_AWS_108:A general role
   statement {
     actions = [
       "lambda:InvokeFunction"
@@ -35,11 +36,4 @@ data "aws_iam_policy_document" "lambda" {
     resources = ["*"]
   }
 
-  statement {
-    actions = [
-      "lex:GetIntent",
-      "lex:PostText"
-    ]
-    resources = ["*"]
-  }
 }
