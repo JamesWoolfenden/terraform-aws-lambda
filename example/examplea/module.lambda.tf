@@ -7,5 +7,5 @@ module "lambda" {
   filename       = "${path.module}/lambda.zip"
   name           = var.name
   region_name    = data.aws_region.current.name
-  role_arn       = data.aws_iam_role.lambda.arn
+  role_arn       = aws_iam_role.lambda.arn
 }
