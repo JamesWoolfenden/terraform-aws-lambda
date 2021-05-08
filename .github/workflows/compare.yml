@@ -22,7 +22,7 @@ jobs:
       - name: tfsec
         run: |
           pip3 install lastversion
-          lastversion tfsec/tfsec -d tfsec-linux-amd64
+          lastversion tfsec/tfsec --assets -d
           chmod +x tfsec-linux-amd64
           ./tfsec-linux-amd64 ${{ env.tf_target_dir }} -f json --out tfsec.json
         continue-on-error: true
@@ -66,10 +66,10 @@ jobs:
       - name: install terrascan
         run: |
           pip3 install lastversion
-          lastversion accurics/terrascan -d terrascan.tar.gz
-          tar -xvf terrascan.tar.gz
+          lastversion accurics/terrascan --assets -d --verbose
+          tar -xvf terrascan*.tar.gz
       - name: run terrascan
-        run: ./terrascan scan -d  ${{ env.tf_target_dir }} -o json -x json >terrascan.json
+        run: ./terrascan scan -d  ${{ env.tf_target_dir }} -o json -x json | tee terrascan.json
         continue-on-error: true
       - name: store
         uses: actions/upload-artifact@v2
@@ -88,8 +88,8 @@ jobs:
       - name: install kics
         run: |
           pip3 install lastversion
-          lastversion Checkmarx/kics -d kics.tar.gz
-          tar -xvf kics.tar.gz
+          lastversion Checkmarx/kics --assets -d
+          tar -xvf kics*.tar.gz
       - name: run kics
         run: ./kics scan -p  ${{ env.tf_target_dir }} -o kics.json --report-formats json
         continue-on-error: true
