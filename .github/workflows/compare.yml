@@ -91,7 +91,7 @@ jobs:
         run: |
           pip3 install lastversion
           now=$(lastversion Checkmarx/kics)
-          curl --location https://github.com/Checkmarx/kics/releases/download/v${now}/terrascan_${now}_Linux_x86_64.tar.gz --output kics.tar.gz
+          curl --location https://github.com/Checkmarx/kics/releases/download/v${now}/kics_${now}_linux_64.tar.gz --output kics.tar.gz
           tar -xvf kics.tar.gz
       - name: run kics
         run: ./kics scan -p  ${{ env.tf_target_dir }} -o kics.json --report-formats json
