@@ -91,7 +91,8 @@ jobs:
         run: |
           pip3 install lastversion
           now=$(lastversion Checkmarx/kics)
-          curl --location https://github.com/Checkmarx/kics/releases/download/v${now}/kics_${now}_linux_64.tar.gz --output kics.tar.gz
+          echo "https://github.com/Checkmarx/kics/releases/download/v${now}/kics_${now}_linux_x64.tar.gz"
+          curl --location "https://github.com/Checkmarx/kics/releases/download/v${now}/kics_${now}_linux_x64.tar.gz" --output kics.tar.gz
           tar -xvf kics.tar.gz
       - name: run kics
         run: ./kics scan -p  ${{ env.tf_target_dir }} -o kics.json --report-formats json
