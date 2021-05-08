@@ -32,7 +32,7 @@ jobs:
         with:
           name: tfsec
           path: tfsec.json
-          if-no-files-found: warn
+          if-no-files-found: error
   checkov:
     runs-on: ubuntu-latest
     steps:
@@ -52,7 +52,7 @@ jobs:
         with:
           name: checkov
           path: checkov.json
-          if-no-files-found: warn
+          if-no-files-found: error
   terrascan:
     runs-on: ubuntu-latest
     steps:
@@ -78,7 +78,7 @@ jobs:
         with:
           name: terrascan
           path: terrascan.json
-          if-no-files-found: warn
+          if-no-files-found: error
   kics:
     runs-on: ubuntu-latest
     steps:
@@ -102,7 +102,7 @@ jobs:
         with:
           name: kics
           path: kics.json
-          if-no-files-found: warn
+          if-no-files-found: error
 
   upload:
     needs: [kics, terrascan, checkov, tfsec]
