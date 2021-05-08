@@ -70,7 +70,9 @@ jobs:
           tar -xvf terrascan*.tar.gz
           chmod +x ./terrascan
       - name: run terrascan
-        run: ./terrascan scan -d  ${{ env.tf_target_dir }} -o json -x json | tee terrascan.json
+        run: |
+          ./terrascan init
+          ./terrascan scan -d  ${{ env.tf_target_dir }} -o json -x json | tee terrascan.json
         continue-on-error: true
       - name: store
         uses: actions/upload-artifact@v2
