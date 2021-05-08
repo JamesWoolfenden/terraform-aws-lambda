@@ -91,7 +91,7 @@ jobs:
       - name: install kics
         run: |
           pip3 install lastversion
-          lastversion Checkmarx/kics --assets -d
+          lastversion Checkmarx/kics --assets -d --verbose
           tar -xvf kics*.tar.gz
       - name: run kics
         run: ./kics scan -p  ${{ env.tf_target_dir }} -o kics.json --report-formats json
