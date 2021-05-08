@@ -22,8 +22,7 @@ jobs:
       - name: tfsec
         run: |
           pip3 install lastversion
-          now=$(lastversion tfsec/tfsec)
-          wget "https://github.com/tfsec/tfsec/releases/download/v${now}/tfsec-linux-amd64"
+          lastversion tfsec/tfsec -d tfsec-linux-amd64
           chmod +x tfsec-linux-amd64
           ./tfsec-linux-amd64 ${{ env.tf_target_dir }} -f json --out tfsec.json
         continue-on-error: true
@@ -67,8 +66,7 @@ jobs:
       - name: install terrascan
         run: |
           pip3 install lastversion
-          now=$(lastversion accurics/terrascan)
-          curl --location https://github.com/accurics/terrascan/releases/download/v${now}/terrascan_${now}_Linux_x86_64.tar.gz --output terrascan.tar.gz
+          lastversion accurics/terrascan -d terrascan.tar.gz
           tar -xvf terrascan.tar.gz
       - name: run terrascan
         run: ./terrascan scan -d  ${{ env.tf_target_dir }} -o json -x json >terrascan.json
@@ -90,9 +88,7 @@ jobs:
       - name: install kics
         run: |
           pip3 install lastversion
-          now=$(lastversion Checkmarx/kics)
-          echo "https://github.com/Checkmarx/kics/releases/download/v${now}/kics_${now}_linux_x64.tar.gz"
-          curl --location "https://github.com/Checkmarx/kics/releases/download/v${now}/kics_${now}_linux_x64.tar.gz" --output kics.tar.gz
+          lastversion Checkmarx/kics -d kics.tar.gz
           tar -xvf kics.tar.gz
       - name: run kics
         run: ./kics scan -p  ${{ env.tf_target_dir }} -o kics.json --report-formats json
