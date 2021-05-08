@@ -32,7 +32,7 @@ jobs:
         with:
           name: tfsec
           path: tfsec.json
-          if-no-files-found: error
+          if-no-files-found: warn
   checkov:
     runs-on: ubuntu-latest
     steps:
@@ -52,7 +52,7 @@ jobs:
         with:
           name: checkov
           path: checkov.json
-          if-no-files-found: error
+          if-no-files-found: warn
   terrascan:
     runs-on: ubuntu-latest
     steps:
@@ -78,7 +78,7 @@ jobs:
         with:
           name: terrascan
           path: terrascan.json
-          if-no-files-found: error
+          if-no-files-found: warn
   kics:
     runs-on: ubuntu-latest
     steps:
@@ -88,7 +88,7 @@ jobs:
           ref: ${{ env.branch }}
           token: ${{ github.token }}
       - name: run kics Scan
-        uses: checkmarx/kics-action@v1.0
+        uses: checkmarx/kics-action@v1.1
         with:
           path: ${{ env.tf_target_dir }}
           output_path: "kics.json"
@@ -98,7 +98,7 @@ jobs:
         with:
           name: kics
           path: kics.json
-          if-no-files-found: error
+          if-no-files-found: warn
 
   upload:
     needs: [kics, terrascan, checkov, tfsec]
