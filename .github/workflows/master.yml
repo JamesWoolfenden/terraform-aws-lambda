@@ -42,6 +42,18 @@ jobs:
         env:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_KEY }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      - run: |
+          pip3 install lastversion
+          lastversion infracost --assets -d --verbose
+          mkdir $GITHUB_WORKSPACE/bin
+          tar -xvf infracost*.tar.gz --directory $GITHUB_WORKSPACE/bin
+          chmod +x $GITHUB_WORKSPACE/bin/infracost-linux-amd64
+          $GITHUB_WORKSPACE/bin/infracost-linux-amd64 breakdown --path ${{ env.tf_target_dir }}
+        env:
+          INFRACOST_API_KEY: ${{ secrets.INFRACOST_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Do not change
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   security:
     runs-on: ubuntu-latest
     steps:
@@ -55,10 +67,9 @@ jobs:
           python-version: 3.8
       - run: |
           pip3 install lastversion
-          now=$(lastversion terraform-docs)
+          lastversion terraform-docs --assets -d --verbose
           mkdir $GITHUB_WORKSPACE/bin
-          curl -L https://github.com/terraform-docs/terraform-docs/releases/download/v${now}/terraform-docs-v${now}-$(uname)-amd64.tar.gz -o terraform-docs.tar.gz
-          tar -xvf terraform-docs.tar.gz --directory $GITHUB_WORKSPACE/bin
+          tar -xvf terraform-docs*.tar.gz --directory $GITHUB_WORKSPACE/bin
           chmod +x $GITHUB_WORKSPACE/bin/terraform-docs
           echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
       - uses: pre-commit/action@v2.0.0
