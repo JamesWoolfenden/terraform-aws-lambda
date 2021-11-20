@@ -14,6 +14,7 @@ resource "aws_lambda_function" "withintent" {
   tags          = var.common_tags
   timeout       = var.timeout
 
+  kms_key_arn = var.kms_key_id
 
   environment {
     variables = var.envvar
@@ -35,4 +36,9 @@ resource "aws_lambda_function" "withintent" {
   tracing_config {
     mode = "PassThrough"
   }
+}
+
+
+variable "kms_key_id" {
+  default = ""
 }
