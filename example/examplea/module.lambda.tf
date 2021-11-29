@@ -8,4 +8,5 @@ module "lambda" {
   name           = var.name
   region_name    = data.aws_region.current.name
   role_arn       = aws_iam_role.lambda.arn
+  kms_key_id     = aws_kms_key.example.arn
 }

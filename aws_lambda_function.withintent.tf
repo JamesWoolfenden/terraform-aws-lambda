@@ -40,5 +40,4 @@ resource "aws_lambda_function" "withintent" {
 
 
 variable "kms_key_id" {
-  default = ""
 }
