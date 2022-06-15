@@ -1,4 +1,6 @@
 resource "aws_lambda_function" "withintent" {
+  #checkov:skip=CKV_AWS_115:Not relevant
+  #checkov:skip=CKV_AWS_116:Not relevant
   description   = var.description
   function_name = var.name
   filename      = var.filename
@@ -30,6 +32,3 @@ resource "aws_lambda_function" "withintent" {
     size = var.ephemeral_storage
   }
 }
-
-
-

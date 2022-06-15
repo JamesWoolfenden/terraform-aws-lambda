@@ -56,22 +56,24 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [aws_iam_policy.AWSLambdaBasicExecutionRole](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.AWSLambdaS3ExecutionRole](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.AWSLambdaVPCAccessExecutionRole](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws_iam_role.updatepolicy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
 | [aws_lambda_function.withintent](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lambda_function) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_account_id"></a> [account\_id](#input\_account\_id) | The Aws account the policy or object should target | `string` | n/a | yes |
 | <a name="input_action"></a> [action](#input\_action) | Action for the Lambda permission | `string` | `"lambda:InvokeFunction"` | no |
 | <a name="input_alarms_enabled"></a> [alarms\_enabled](#input\_alarms\_enabled) | Cloudwatch alarms enabled | `bool` | `false` | no |
-| <a name="input_common_tags"></a> [common\_tags](#input\_common\_tags) | Implements the common tags scheme | `map(any)` | n/a | yes |
 | <a name="input_description"></a> [description](#input\_description) | Of the the Lambda | `string` | n/a | yes |
-| <a name="input_envvar"></a> [envvar](#input\_envvar) | Optional set of environmental variables for the lambda | `map(any)` | <pre>{<br>  "Terraform": "Bug"<br>}</pre> | no |
+| <a name="input_envvar"></a> [envvar](#input\_envvar) | Optional set of environmental variables for the lambda | `map(any)` | `{}` | no |
+| <a name="input_ephemeral_storage"></a> [ephemeral\_storage](#input\_ephemeral\_storage) | Storage for lambda Min 512 MB and the Max 10240 MB | `number` | `512` | no |
 | <a name="input_filename"></a> [filename](#input\_filename) | name of zip file if any | `string` | `null` | no |
 | <a name="input_handler"></a> [handler](#input\_handler) | The file the lambda should import | `string` | `"index.handler"` | no |
-| <a name="input_kms_key_id"></a> [kms\_key\_id](#input\_kms\_key\_id) | n/a | `any` | n/a | yes |
-| <a name="input_lambdapermmissions"></a> [lambdapermmissions](#input\_lambdapermmissions) | This takes a list object with values to set permissions of a lambda. Can take multiple permission objects | `list(any)` | `[]` | no |
+| <a name="input_kms_key_id"></a> [kms\_key\_id](#input\_kms\_key\_id) | Your KMS Key ARN | `string` | n/a | yes |
 | <a name="input_layers"></a> [layers](#input\_layers) | Optionally, add in up 5 lambda layers | `list(any)` | `[]` | no |
 | <a name="input_memory_size"></a> [memory\_size](#input\_memory\_size) | Of the the lambda | `string` | `"128"` | no |
 | <a name="input_metric_comparison_operator"></a> [metric\_comparison\_operator](#input\_metric\_comparison\_operator) | For Cloudwatch Alarms | `string` | `"GreaterThanThreshold"` | no |
@@ -83,10 +85,8 @@ No modules.
 | <a name="input_metric_threshold"></a> [metric\_threshold](#input\_metric\_threshold) | n/a | `number` | `100` | no |
 | <a name="input_name"></a> [name](#input\_name) | Name of Lambda object | `string` | n/a | yes |
 | <a name="input_prefixdash"></a> [prefixdash](#input\_prefixdash) | Support for renaming on multi-environments | `string` | `""` | no |
-| <a name="input_principal"></a> [principal](#input\_principal) | n/a | `string` | `"lex.amazonaws.com"` | no |
-| <a name="input_region_name"></a> [region\_name](#input\_region\_name) | Aws region name, eu-west-1... | `string` | n/a | yes |
-| <a name="input_role_arn"></a> [role\_arn](#input\_role\_arn) | The name you want your IAM role to have | `string` | n/a | yes |
-| <a name="input_runtime"></a> [runtime](#input\_runtime) | Language the code runs in | `string` | `"nodejs8.10"` | no |
+| <a name="input_region"></a> [region](#input\_region) | Aws region name, eu-west-1... | `string` | n/a | yes |
+| <a name="input_runtime"></a> [runtime](#input\_runtime) | Language the code runs in | `string` | `"python3.8"` | no |
 | <a name="input_s3_bucket"></a> [s3\_bucket](#input\_s3\_bucket) | path to the lambda bucket | `string` | `null` | no |
 | <a name="input_s3_key"></a> [s3\_key](#input\_s3\_key) | path to the lambda zip | `string` | `null` | no |
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | The IDs of some security groups | `list(string)` | `[]` | no |
