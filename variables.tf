@@ -153,3 +153,11 @@ variable "kms_key_id" {
   type        = string
   description = "Your KMS Key ARN"
 }
+
+
+
+variable "ephemeral_storage" {
+  type        = number
+  default     = 512
+  description = "Storage for lambda Min 512 MB and the Max 10240 MB"
+}
