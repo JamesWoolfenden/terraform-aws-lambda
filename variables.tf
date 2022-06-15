@@ -138,7 +138,7 @@ variable "metric_statistic" {
 }
 
 variable "metric_threshold" {
-  type = number
+  type    = number
   default = 100
 }
 
@@ -150,6 +150,6 @@ variable "tracing_mode" {
 
 
 variable "kms_key_id" {
-  type=string
-  description="Your KMS Key ARN"
+  type        = string
+  description = "Your KMS Key ARN"
 }
