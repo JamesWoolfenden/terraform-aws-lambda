@@ -13,4 +13,7 @@ resource "aws_iam_policy" "AWSLambdaS3ExecutionRole" {
       }
     ]
   })
+  lifecycle {
+    create_before_destroy = true
+  }
 }

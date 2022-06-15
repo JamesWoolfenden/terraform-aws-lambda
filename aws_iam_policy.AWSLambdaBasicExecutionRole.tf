@@ -21,4 +21,8 @@ resource "aws_iam_policy" "AWSLambdaBasicExecutionRole" {
       }
     ]
   })
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }

@@ -15,4 +15,7 @@ resource "aws_iam_policy" "AWSLambdaVPCAccessExecutionRole" {
       }
     ]
   })
+  lifecycle {
+    create_before_destroy = true
+  }
 }

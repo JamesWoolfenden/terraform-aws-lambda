@@ -148,13 +148,10 @@ variable "tracing_mode" {
   default     = "Active"
 }
 
-
 variable "kms_key_id" {
   type        = string
   description = "Your KMS Key ARN"
 }
-
-
 
 variable "ephemeral_storage" {
   type        = number

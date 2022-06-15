@@ -4,6 +4,7 @@ resource "aws_lambda_function" "withintent" {
   description   = var.description
   function_name = var.name
   filename      = var.filename
+  source_code_hash = filebase64sha256(var.filename)
   handler       = var.handler
   layers        = var.layers
   memory_size   = var.memory_size
@@ -12,7 +13,6 @@ resource "aws_lambda_function" "withintent" {
   s3_bucket     = var.s3_bucket
   s3_key        = var.s3_key
   timeout       = var.timeout
-
   kms_key_arn = var.kms_key_id
 
   environment {
