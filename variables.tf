@@ -1,27 +1,11 @@
-variable "lambdapermmissions" {
-  type        = list(any)
-  description = "This takes a list object with values to set permissions of a lambda. Can take multiple permission objects"
-  default     = []
-}
-
 variable "name" {
   type        = string
   description = "Name of Lambda object"
 }
 
-variable "region_name" {
+variable "region" {
   type        = string
   description = "Aws region name, eu-west-1..."
-}
-
-variable "role_arn" {
-  type        = string
-  description = "The name you want your IAM role to have"
-}
-
-variable "account_id" {
-  type        = string
-  description = "The Aws account the policy or object should target"
 }
 
 variable "handler" {
@@ -49,7 +33,7 @@ variable "memory_size" {
 
 variable "envvar" {
   type        = map(any)
-  default     = { "Terraform" = "Bug" }
+  default     = {}
   description = "Optional set of environmental variables for the lambda"
 }
 
@@ -62,13 +46,9 @@ variable "vpc_config" {
 variable "runtime" {
   type        = string
   description = "Language the code runs in"
-  default     = "nodejs8.10"
+  default     = "python3.8"
 }
 
-variable "common_tags" {
-  type        = map(any)
-  description = "Implements the common tags scheme"
-}
 
 variable "prefixdash" {
   default     = ""
@@ -92,11 +72,6 @@ variable "s3_bucket" {
   description = "path to the lambda bucket"
   type        = string
   default     = null
-}
-
-variable "principal" {
-  type    = string
-  default = "lex.amazonaws.com"
 }
 
 variable "action" {
@@ -164,7 +139,6 @@ variable "metric_statistic" {
 
 variable "metric_threshold" {
   type = number
-
   default = 100
 }
 
@@ -172,4 +146,10 @@ variable "tracing_mode" {
   type        = string
   description = "Enable X-ray and in what mode Active or PassThrough"
   default     = "Active"
+}
+
+
+variable "kms_key_id" {
+  type=string
+  description="Your KMS Key ARN"
 }
