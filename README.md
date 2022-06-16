@@ -100,6 +100,7 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_lambda"></a> [lambda](#output\_lambda) | n/a |
+| <a name="output_role"></a> [role](#output\_role) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Further work
