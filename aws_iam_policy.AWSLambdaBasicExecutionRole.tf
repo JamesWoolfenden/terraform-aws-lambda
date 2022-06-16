@@ -7,7 +7,7 @@ resource "aws_iam_policy" "AWSLambdaBasicExecutionRole" {
       {
         "Effect" : "Allow",
         "Action" : "logs:CreateLogGroup",
-        "Resource" : "arn:aws:logs:eu-west-2:680235478471:*"
+        "Resource" : "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:*"
       },
       {
         "Effect" : "Allow",
@@ -16,7 +16,7 @@ resource "aws_iam_policy" "AWSLambdaBasicExecutionRole" {
           "logs:PutLogEvents"
         ],
         "Resource" : [
-          "arn:aws:logs:eu-west-2:680235478471:log-group:/aws/lambda/updatepolicy:*"
+          "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:/aws/lambda/updatepolicy:*"
         ]
       }
     ]

@@ -5,6 +5,7 @@ resource "aws_iam_role" "updatepolicy" {
     aws_iam_policy.AWSLambdaBasicExecutionRole.arn,
     aws_iam_policy.AWSLambdaS3ExecutionRole.arn,
     aws_iam_policy.AWSLambdaVPCAccessExecutionRole.arn,
+    aws_iam_policy.AWSLambdaKMSRole.arn,
   ]
   assume_role_policy = jsonencode(
     {
