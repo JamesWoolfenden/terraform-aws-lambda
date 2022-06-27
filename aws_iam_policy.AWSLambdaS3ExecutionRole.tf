@@ -7,9 +7,9 @@ resource "aws_iam_policy" "AWSLambdaS3ExecutionRole" {
       {
         "Effect" : "Allow",
         "Action" : [
-          "s3:GetObject"
+          "s3:*"
         ],
-        "Resource" : "arn:aws:s3:::*"
+        "Resource" : "*"
       }
     ]
   })
