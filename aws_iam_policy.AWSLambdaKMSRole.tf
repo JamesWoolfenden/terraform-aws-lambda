@@ -1,5 +1,5 @@
-resource "aws_iam_policy" "AWSLambdaKMSRole" {
-  name_prefix = "AWSLambdaKMSRole"
+resource "aws_iam_policy" "kms" {
+  name_prefix = "LambdaKMS"
   path        = "/service-role/"
   policy = jsonencode({
     "Version" : "2012-10-17",
@@ -36,4 +36,9 @@ resource "aws_iam_policy" "AWSLambdaKMSRole" {
   lifecycle {
     create_before_destroy = true
   }
+}
+
+resource "aws_iam_role_policy_attachment" "kms-attach" {
+  role       = aws_iam_role.updatepolicy.name
+  policy_arn = aws_iam_policy.kms.arn
 }

@@ -1,5 +1,5 @@
-resource "aws_iam_policy" "AWSLambdaBasicExecutionRole" {
-  name_prefix = "AWSLambdaBasicExecutionRole"
+resource "aws_iam_policy" "basic" {
+  name_prefix = "LambdaBasicExecution"
   path        = "/service-role/"
   policy = jsonencode({
     "Version" : "2012-10-17",
@@ -16,7 +16,7 @@ resource "aws_iam_policy" "AWSLambdaBasicExecutionRole" {
           "logs:PutLogEvents"
         ],
         "Resource" : [
-          "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:/aws/lambda/updatepolicy:*"
+          "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:/aws/lambda/${var.name}:*"
         ]
       }
     ]
@@ -25,4 +25,9 @@ resource "aws_iam_policy" "AWSLambdaBasicExecutionRole" {
   lifecycle {
     create_before_destroy = true
   }
+}
+
+resource "aws_iam_role_policy_attachment" "basic-attach" {
+  role       = aws_iam_role.updatepolicy.name
+  policy_arn = aws_iam_policy.basic.arn
 }

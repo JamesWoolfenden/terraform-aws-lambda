@@ -1,5 +1,5 @@
-resource "aws_iam_policy" "AWSLambdaVPCAccessExecutionRole" {
-  name_prefix = "AWSLambdaVPCAccessExecutionRole"
+resource "aws_iam_policy" "vpc" {
+  name_prefix = "LambdaVPC"
   path        = "/service-role/"
   policy = jsonencode({
     "Version" : "2012-10-17",
@@ -18,4 +18,9 @@ resource "aws_iam_policy" "AWSLambdaVPCAccessExecutionRole" {
   lifecycle {
     create_before_destroy = true
   }
+}
+
+resource "aws_iam_role_policy_attachment" "vpc-attach" {
+  role       = aws_iam_role.updatepolicy.name
+  policy_arn = aws_iam_policy.vpc.arn
 }

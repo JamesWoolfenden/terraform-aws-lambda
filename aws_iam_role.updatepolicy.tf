@@ -1,12 +1,7 @@
 resource "aws_iam_role" "updatepolicy" {
   name = var.name
   path = "/service-role/"
-  managed_policy_arns = [
-    aws_iam_policy.AWSLambdaBasicExecutionRole.arn,
-    aws_iam_policy.AWSLambdaS3ExecutionRole.arn,
-    aws_iam_policy.AWSLambdaVPCAccessExecutionRole.arn,
-    aws_iam_policy.AWSLambdaKMSRole.arn,
-  ]
+
   assume_role_policy = jsonencode(
     {
       Statement = [
