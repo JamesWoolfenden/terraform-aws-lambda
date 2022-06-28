@@ -7,9 +7,9 @@ resource "aws_iam_policy" "s3" {
       {
         "Effect" : "Allow",
         "Action" : [
-          "s3:GetObject"
+          "s3:*"
         ],
-        "Resource" : "arn:aws:s3:::*"
+        "Resource" : "*"
       }
     ]
   })
