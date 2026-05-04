@@ -37,7 +37,6 @@ resource "aws_iam_policy" "kms" {
     create_before_destroy = true
   }
 }
-
 resource "aws_iam_role_policy_attachment" "kms-attach" {
   role       = aws_iam_role.updatepolicy.name
   policy_arn = aws_iam_policy.kms.arn

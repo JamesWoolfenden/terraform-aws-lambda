@@ -19,7 +19,6 @@ resource "aws_iam_policy" "vpc" {
     create_before_destroy = true
   }
 }
-
 resource "aws_iam_role_policy_attachment" "vpc-attach" {
   role       = aws_iam_role.updatepolicy.name
   policy_arn = aws_iam_policy.vpc.arn

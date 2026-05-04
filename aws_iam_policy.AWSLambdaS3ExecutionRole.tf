@@ -17,7 +17,6 @@ resource "aws_iam_policy" "s3" {
     create_before_destroy = true
   }
 }
-
 resource "aws_iam_role_policy_attachment" "s3-attach" {
   role       = aws_iam_role.updatepolicy.name
   policy_arn = aws_iam_policy.s3.arn
