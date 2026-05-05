@@ -130,9 +130,13 @@ resource "aws_iam_policy" "terraform_pike" {
             "Sid": "VisualEditor0",
             "Effect": "Allow",
             "Action": [
-                "ec2:DescribeAccountAttributes"
+                "ec2:DescribeAccountAttributes",
+                "ec2:DescribeNetworkInterfaces",
+                "ec2:DescribeSecurityGroups"
             ],
-            "Resource": "*"
+            "Resource": [
+                "*"
+            ]
         },
         {
             "Sid": "VisualEditor1",
@@ -153,10 +157,25 @@ resource "aws_iam_policy" "terraform_pike" {
                 "iam:ListRolePolicies",
                 "iam:PassRole"
             ],
-            "Resource": "*"
+            "Resource": [
+                "*"
+            ]
         },
         {
             "Sid": "VisualEditor2",
+            "Effect": "Allow",
+            "Action": [
+                "kms:CreateGrant",
+                "kms:Decrypt",
+                "kms:Encrypt",
+                "kms:GenerateDataKey"
+            ],
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Sid": "VisualEditor3",
             "Effect": "Allow",
             "Action": [
                 "lambda:CreateFunction",
@@ -165,7 +184,20 @@ resource "aws_iam_policy" "terraform_pike" {
                 "lambda:GetFunctionCodeSigningConfig",
                 "lambda:ListVersionsByFunction"
             ],
-            "Resource": "*"
+            "Resource": [
+                "*"
+            ]
+        },
+        {
+            "Sid": "VisualEditor4",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectVersion"
+            ],
+            "Resource": [
+                "*"
+            ]
         }
     ]
 })
