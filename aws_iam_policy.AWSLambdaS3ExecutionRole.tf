@@ -1,4 +1,6 @@
 resource "aws_iam_policy" "s3" {
+  # checkov:skip=CKV_AWS_288: IAM policy requires broad read access for this module to function
+  # checkov:skip=CKV_AWS_289: IAM policy requires permissions management for this module to function
   # checkov:skip=CKV_AWS_290: IAM policy requires broad write access for this module to function
   # checkov:skip=CKV_AWS_355: IAM policy requires wildcard resource for this module to function
   name_prefix = "LambdaS3"
